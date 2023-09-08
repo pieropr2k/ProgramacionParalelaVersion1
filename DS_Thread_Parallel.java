@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -108,13 +107,40 @@ public class DS_Thread_Parallel {
                     long inicio = System.currentTimeMillis();
                     LBLStarterList[i_iterator].setText("Time Execution: " + inicio / 1000 + " segundos");
                     //BubbleSort(VList[i_iterator], TAList[i_iterator]);
-                    BubbleSort2(VList[i_iterator], TAList[i_iterator]);
+                    //BubbleSort2(VList[i_iterator], TAList[i_iterator]);
+                    ProcessFunction(i_iterator, VList[i_iterator], TAList[i_iterator], N);
+
                     AIList[i_iterator].set(0);
                     long fin = System.currentTimeMillis() - inicio;
                     LBLFinishList[i_iterator].setText("Time Execution: " + fin / 1000 + " segundos");
                     System.out.println("\n");
                 }
             }).start();
+        }
+    }
+
+    // ==============================================================================
+    public static void ProcessFunction(int iteration_value, int V[], JTextArea TA, int B) {
+        switch (iteration_value) {
+            case 0:
+                BubbleSort(V, TA);
+                break;
+            case 1:
+                BubbleSort2(V, TA);
+                break;
+            case 2:
+                //QuickSort(V, 1, B, TA);
+                EvenNumbers(V, TA);
+                break;
+            case 3:
+                FibonacciNumbers(V, TA);
+                break;
+            case 4:
+                OddNumbers(V, TA);
+                //BubbleSort2(V, TA);
+                break;
+            default:
+                break;
         }
     }
 
@@ -189,7 +215,40 @@ public class DS_Thread_Parallel {
     }
 
     // ==============================================================================
-    public long FibR(int n) {
+    public static void EvenNumbers(int V[], JTextArea TA) {
+        int n = V.length;
+        TA.setText("");
+        for (int k = 1; k <= n - 1; k++) {
+            if (k%2 == 0) {
+                TA.append("Cycle " + k + "\n");    
+            }
+            //TA.append("Cycle " + k + "\n");
+        }
+    }
+
+    // ==============================================================================
+    public static void OddNumbers(int V[], JTextArea TA) {
+        int n = V.length;
+        TA.setText("");
+        for (int k = 1; k <= n - 1; k++) {
+            if (k%2 != 0) {
+                TA.append("Cycle " + k + "\n");    
+            }
+            //TA.append("Cycle " + k + "\n");
+        }
+    }
+
+    // ==============================================================================
+    public static void FibonacciNumbers(int V[], JTextArea TA) {
+        int n = V.length;
+        TA.setText("");
+        for (int k = 1; k <= n - 1; k++) {
+            TA.append("Cycle " + FibR(k) + "\n");
+        }
+    }
+
+    // ==============================================================================
+    public static long FibR(int n) {
         if (n == 1) {
             return 0;
         } else if (n == 2) {
