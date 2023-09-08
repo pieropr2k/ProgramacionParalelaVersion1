@@ -9,6 +9,7 @@ Crear una aplicación Java que realice lo siguiente
 Versión Serial:
 <br>
 <img src="https://i.imgur.com/AjVFBHT.jpg" alt="image" width="400" height="auto">
+<br>
 Versión Paralela:
 <br>
 <img src="https://i.imgur.com/NbcC1xV.jpg" alt="image" width="400" height="auto">
